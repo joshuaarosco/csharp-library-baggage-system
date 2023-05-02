@@ -6,6 +6,7 @@ Public Class LoginUserControl
         LoadTableHeader()
         AdminLoadTable()
         PnlStudNum.Visible = False
+        BtnAdd.Visible = False
     End Sub
     Sub Authenticate()
         Try
@@ -30,16 +31,6 @@ Public Class LoginUserControl
         End Try
     End Sub
 
-    Private Sub BtnLogin_Click(sender As Object, e As EventArgs) Handles BtnLogin.Click
-        Authenticate()
-        If authenticated = True Then
-            PnlLogin.SendToBack()
-            PnlStudNum.Visible = True
-        Else
-            MessageBox.Show("Invalid username and password combination.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-        End If
-    End Sub
-
     Sub AdminLoadTable()
         Try
 
@@ -51,13 +42,16 @@ Public Class LoginUserControl
             admintable.Clear()
             admindata.Clear()
 
+            con.Close()
+
             If adapter.Fill(admindata) Then
                 For x As Integer = 0 To admindata.Tables(0).Rows.Count - 1
 
                     Dim id As String = admindata.Tables(0).Rows(x)("id").ToString()
-                    Dim name As String = admindata.Tables(0).Rows(x)("name").ToString()
-                    Dim student_id As String = admindata.Tables(0).Rows(x)("student_id").ToString()
-                    Dim keycard_number As String = admindata.Tables(0).Rows(x)("keycard_number").ToString()
+                    Dim name As String = GetUserName(admindata.Tables(0).Rows(x)("user_id").ToString())(0)
+                    Dim student_id As String = GetUserName(admindata.Tables(0).Rows(x)("user_id").ToString())(1)
+                    Dim keycard_number As String = GetKeycardName(admindata.Tables(0).Rows(x)("keycard_id").ToString())
+                    Dim locker_number As String = GetLockerName(admindata.Tables(0).Rows(x)("locker_id").ToString())
                     Dim status As String = admindata.Tables(0).Rows(x)("status").ToString()
                     Dim time_out As String
 
@@ -75,7 +69,7 @@ Public Class LoginUserControl
                     End If
 
 
-                    admintable.Rows.Add(id, name, student_id, keycard_number, UppercaseFirstLetter(status), in_date, time_in, time_out)
+                    admintable.Rows.Add(id, name, student_id, locker_number, UppercaseFirstLetter(status), in_date, time_in, time_out)
                 Next
 
                 DgvBaggages.DataSource = admintable
@@ -83,14 +77,13 @@ Public Class LoginUserControl
                 DgvBaggages.Columns(0).Visible = False
             End If
 
-            con.Close()
 
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
     End Sub
 
-    Private Sub TxtSearch_TextChanged(sender As Object, e As EventArgs) Handles TxtSearch.TextChanged
+    Private Sub TxtSearch_TextChanged(sender As Object, e As EventArgs)
         If String.IsNullOrEmpty(TxtSearch.Text) Then
             LblSearch.Visible = True
             AdminLoadTable()
@@ -151,8 +144,22 @@ Public Class LoginUserControl
         End Try
     End Sub
 
-    Private Sub DgvBaggages_CellFormatting(sender As Object, e As DataGridViewCellFormattingEventArgs) Handles DgvBaggages.CellFormatting
+    Private Sub DgvBaggages_CellFormatting(sender As Object, e As DataGridViewCellFormattingEventArgs)
         ChangeCellColor(DgvBaggages)
     End Sub
 
+    Private Sub BtnAdd_Click(sender As Object, e As EventArgs) Handles BtnAdd.Click
+        MainFrm.showRegisterForm = True
+    End Sub
+
+    Private Sub BtnLogin_Click(sender As Object, e As EventArgs) Handles BtnLogin.Click
+        Authenticate()
+        If authenticated = True Then
+            PnlLogin.SendToBack()
+            PnlStudNum.Visible = True
+            BtnAdd.Visible = True
+        Else
+            MessageBox.Show("Invalid username and password combination.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+        End If
+    End Sub
 End Class

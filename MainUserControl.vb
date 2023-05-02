@@ -1,9 +1,15 @@
-﻿Public Class MainUserControl
+﻿Imports System.IO
+Imports System.IO.Ports
+Imports System.Threading
+Imports System.IO.Ports.SerialPort
+Public Class MainUserControl
+    Public mainTableRefresh As Boolean = False
 
     Private Sub MainUserControl_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         LoadTableHeaderMain()
         LoadTable()
         ChangeCellColor(DgvBaggages)
+        TimerMainUserControl.Enabled = True
     End Sub
 
     Sub LoadTable()
@@ -12,7 +18,7 @@
             OpenCon()
 
             cmd.Connection = con
-            cmd.CommandText = "SELECT * FROM baggages GROUP BY keycard_number ORDER BY time_in DESC"
+            cmd.CommandText = "SELECT * FROM lockers"
             adapter.SelectCommand = cmd
             table.Clear()
             data.Clear()
@@ -21,10 +27,10 @@
                 For x As Integer = 0 To data.Tables(0).Rows.Count - 1
 
                     Dim id As String = data.Tables(0).Rows(x)("id").ToString()
-                    Dim keycard_number As String = data.Tables(0).Rows(x)("keycard_number").ToString()
+                    Dim locker_name As String = data.Tables(0).Rows(x)("name").ToString()
                     Dim status As String = data.Tables(0).Rows(x)("status").ToString()
 
-                    table.Rows.Add(id, keycard_number, UppercaseFirstLetter(status))
+                    table.Rows.Add(id, locker_name, UppercaseFirstLetter(status))
                 Next
 
                 DgvBaggages.DataSource = table
@@ -87,4 +93,12 @@
     Private Sub DgvBaggages_CellFormatting(sender As Object, e As DataGridViewCellFormattingEventArgs) Handles DgvBaggages.CellFormatting
         ChangeCellColor(DgvBaggages)
     End Sub
+
+    Private Sub TimerMainUserControl_Tick(sender As Object, e As EventArgs) Handles TimerMainUserControl.Tick
+        If mainTableRefresh Then
+            LoadTable()
+            mainTableRefresh = False
+        End If
+    End Sub
+
 End Class

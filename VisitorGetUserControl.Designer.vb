@@ -1,4 +1,6 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿Imports System.IO.Ports
+
+<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class VisitorGetUserControl
     Inherits System.Windows.Forms.UserControl
 
@@ -22,233 +24,301 @@ Partial Class VisitorGetUserControl
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.PnlVisitorName = New System.Windows.Forms.Panel()
-        Me.TxtVisitorName = New System.Windows.Forms.TextBox()
-        Me.LblVisitorName = New System.Windows.Forms.Label()
-        Me.BtnNext = New System.Windows.Forms.Button()
-        Me.LblVisitorId = New System.Windows.Forms.Label()
-        Me.PnlVisitorId = New System.Windows.Forms.Panel()
-        Me.TxtVisitorId = New System.Windows.Forms.TextBox()
-        Me.BtnBack = New System.Windows.Forms.Button()
-        Me.BtnSubmit = New System.Windows.Forms.Button()
-        Me.PnlPassword = New System.Windows.Forms.Panel()
-        Me.TxtPassword = New System.Windows.Forms.TextBox()
-        Me.LblPassword = New System.Windows.Forms.Label()
-        Me.PnlKeycard = New System.Windows.Forms.Panel()
-        Me.TxtKeycard = New System.Windows.Forms.TextBox()
-        Me.LblKeycard = New System.Windows.Forms.Label()
-        Me.PnlVisitorName.SuspendLayout()
-        Me.PnlVisitorId.SuspendLayout()
-        Me.PnlPassword.SuspendLayout()
-        Me.PnlKeycard.SuspendLayout()
-        Me.SuspendLayout()
-        '
-        'PnlVisitorName
-        '
-        Me.PnlVisitorName.BackColor = System.Drawing.SystemColors.ControlLightLight
-        Me.PnlVisitorName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.PnlVisitorName.Controls.Add(Me.TxtVisitorName)
-        Me.PnlVisitorName.Location = New System.Drawing.Point(155, 238)
-        Me.PnlVisitorName.Name = "PnlVisitorName"
-        Me.PnlVisitorName.Size = New System.Drawing.Size(300, 35)
-        Me.PnlVisitorName.TabIndex = 23
-        '
-        'TxtVisitorName
-        '
-        Me.TxtVisitorName.BackColor = System.Drawing.SystemColors.ControlLightLight
-        Me.TxtVisitorName.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.TxtVisitorName.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.TxtVisitorName.Location = New System.Drawing.Point(9, 9)
-        Me.TxtVisitorName.Margin = New System.Windows.Forms.Padding(10)
-        Me.TxtVisitorName.Name = "TxtVisitorName"
-        Me.TxtVisitorName.Size = New System.Drawing.Size(280, 15)
-        Me.TxtVisitorName.TabIndex = 0
-        '
-        'LblVisitorName
-        '
-        Me.LblVisitorName.AutoSize = True
-        Me.LblVisitorName.BackColor = System.Drawing.Color.Transparent
-        Me.LblVisitorName.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.LblVisitorName.ForeColor = System.Drawing.Color.Gold
-        Me.LblVisitorName.Location = New System.Drawing.Point(155, 221)
-        Me.LblVisitorName.Name = "LblVisitorName"
-        Me.LblVisitorName.Size = New System.Drawing.Size(86, 14)
-        Me.LblVisitorName.TabIndex = 21
-        Me.LblVisitorName.Text = "Visitor Name"
-        '
-        'BtnNext
-        '
-        Me.BtnNext.BackColor = System.Drawing.Color.Gold
-        Me.BtnNext.FlatAppearance.BorderSize = 0
-        Me.BtnNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BtnNext.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.BtnNext.ForeColor = System.Drawing.Color.Navy
-        Me.BtnNext.Location = New System.Drawing.Point(155, 334)
-        Me.BtnNext.Name = "BtnNext"
-        Me.BtnNext.Size = New System.Drawing.Size(300, 35)
-        Me.BtnNext.TabIndex = 22
-        Me.BtnNext.Text = "Next"
-        Me.BtnNext.UseVisualStyleBackColor = False
-        '
-        'LblVisitorId
-        '
-        Me.LblVisitorId.AutoSize = True
-        Me.LblVisitorId.BackColor = System.Drawing.Color.Transparent
-        Me.LblVisitorId.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.LblVisitorId.ForeColor = System.Drawing.Color.Gold
-        Me.LblVisitorId.Location = New System.Drawing.Point(155, 166)
-        Me.LblVisitorId.Name = "LblVisitorId"
-        Me.LblVisitorId.Size = New System.Drawing.Size(63, 14)
-        Me.LblVisitorId.TabIndex = 24
-        Me.LblVisitorId.Text = "Visitor Id"
-        '
-        'PnlVisitorId
-        '
-        Me.PnlVisitorId.BackColor = System.Drawing.SystemColors.ControlLightLight
-        Me.PnlVisitorId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.PnlVisitorId.Controls.Add(Me.TxtVisitorId)
-        Me.PnlVisitorId.Location = New System.Drawing.Point(155, 183)
-        Me.PnlVisitorId.Name = "PnlVisitorId"
-        Me.PnlVisitorId.Size = New System.Drawing.Size(300, 35)
-        Me.PnlVisitorId.TabIndex = 25
-        '
-        'TxtVisitorId
-        '
-        Me.TxtVisitorId.BackColor = System.Drawing.SystemColors.ControlLightLight
-        Me.TxtVisitorId.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.TxtVisitorId.Enabled = False
-        Me.TxtVisitorId.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.TxtVisitorId.Location = New System.Drawing.Point(9, 9)
-        Me.TxtVisitorId.Margin = New System.Windows.Forms.Padding(10)
-        Me.TxtVisitorId.Name = "TxtVisitorId"
-        Me.TxtVisitorId.Size = New System.Drawing.Size(280, 15)
-        Me.TxtVisitorId.TabIndex = 0
-        '
-        'BtnBack
-        '
-        Me.BtnBack.BackColor = System.Drawing.Color.Navy
-        Me.BtnBack.FlatAppearance.BorderColor = System.Drawing.Color.Gold
-        Me.BtnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BtnBack.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.BtnBack.ForeColor = System.Drawing.Color.Gold
-        Me.BtnBack.Location = New System.Drawing.Point(155, 269)
-        Me.BtnBack.Name = "BtnBack"
-        Me.BtnBack.Size = New System.Drawing.Size(150, 35)
-        Me.BtnBack.TabIndex = 27
-        Me.BtnBack.Text = "Back"
-        Me.BtnBack.UseVisualStyleBackColor = False
-        '
-        'BtnSubmit
-        '
-        Me.BtnSubmit.BackColor = System.Drawing.Color.Gold
-        Me.BtnSubmit.FlatAppearance.BorderSize = 0
-        Me.BtnSubmit.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BtnSubmit.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.BtnSubmit.ForeColor = System.Drawing.Color.Navy
-        Me.BtnSubmit.Location = New System.Drawing.Point(304, 269)
-        Me.BtnSubmit.Name = "BtnSubmit"
-        Me.BtnSubmit.Size = New System.Drawing.Size(150, 35)
-        Me.BtnSubmit.TabIndex = 26
-        Me.BtnSubmit.Text = "Submit"
-        Me.BtnSubmit.UseVisualStyleBackColor = False
-        '
-        'PnlPassword
-        '
-        Me.PnlPassword.BackColor = System.Drawing.SystemColors.ControlLightLight
-        Me.PnlPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.PnlPassword.Controls.Add(Me.TxtPassword)
-        Me.PnlPassword.Location = New System.Drawing.Point(155, 293)
-        Me.PnlPassword.Name = "PnlPassword"
-        Me.PnlPassword.Size = New System.Drawing.Size(300, 35)
-        Me.PnlPassword.TabIndex = 29
-        '
-        'TxtPassword
-        '
-        Me.TxtPassword.BackColor = System.Drawing.SystemColors.ControlLightLight
-        Me.TxtPassword.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.TxtPassword.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.TxtPassword.Location = New System.Drawing.Point(9, 9)
-        Me.TxtPassword.Margin = New System.Windows.Forms.Padding(10)
-        Me.TxtPassword.Name = "TxtPassword"
-        Me.TxtPassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(8226)
-        Me.TxtPassword.Size = New System.Drawing.Size(280, 15)
-        Me.TxtPassword.TabIndex = 0
-        '
-        'LblPassword
-        '
-        Me.LblPassword.AutoSize = True
-        Me.LblPassword.BackColor = System.Drawing.Color.Transparent
-        Me.LblPassword.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.LblPassword.ForeColor = System.Drawing.Color.Gold
-        Me.LblPassword.Location = New System.Drawing.Point(155, 276)
-        Me.LblPassword.Name = "LblPassword"
-        Me.LblPassword.Size = New System.Drawing.Size(111, 14)
-        Me.LblPassword.TabIndex = 28
-        Me.LblPassword.Text = "Admin Password"
-        '
-        'PnlKeycard
-        '
-        Me.PnlKeycard.BackColor = System.Drawing.SystemColors.ControlLightLight
-        Me.PnlKeycard.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.PnlKeycard.Controls.Add(Me.TxtKeycard)
-        Me.PnlKeycard.Location = New System.Drawing.Point(155, 228)
-        Me.PnlKeycard.Name = "PnlKeycard"
-        Me.PnlKeycard.Size = New System.Drawing.Size(300, 35)
-        Me.PnlKeycard.TabIndex = 30
-        '
-        'TxtKeycard
-        '
-        Me.TxtKeycard.BackColor = System.Drawing.SystemColors.ControlLightLight
-        Me.TxtKeycard.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.TxtKeycard.Enabled = False
-        Me.TxtKeycard.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.TxtKeycard.Location = New System.Drawing.Point(9, 9)
-        Me.TxtKeycard.Margin = New System.Windows.Forms.Padding(10)
-        Me.TxtKeycard.Name = "TxtKeycard"
-        Me.TxtKeycard.Size = New System.Drawing.Size(280, 15)
-        Me.TxtKeycard.TabIndex = 0
-        '
-        'LblKeycard
-        '
-        Me.LblKeycard.AutoSize = True
-        Me.LblKeycard.BackColor = System.Drawing.Color.Transparent
-        Me.LblKeycard.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.LblKeycard.ForeColor = System.Drawing.Color.Gold
-        Me.LblKeycard.Location = New System.Drawing.Point(155, 211)
-        Me.LblKeycard.Name = "LblKeycard"
-        Me.LblKeycard.Size = New System.Drawing.Size(101, 14)
-        Me.LblKeycard.TabIndex = 31
-        Me.LblKeycard.Text = "Locker Number"
-        '
-        'VisitorGetUserControl
-        '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.Navy
-        Me.Controls.Add(Me.PnlPassword)
-        Me.Controls.Add(Me.LblPassword)
-        Me.Controls.Add(Me.LblVisitorName)
-        Me.Controls.Add(Me.LblVisitorId)
-        Me.Controls.Add(Me.PnlVisitorId)
-        Me.Controls.Add(Me.BtnNext)
-        Me.Controls.Add(Me.LblKeycard)
-        Me.Controls.Add(Me.PnlVisitorName)
-        Me.Controls.Add(Me.BtnBack)
-        Me.Controls.Add(Me.BtnSubmit)
-        Me.Controls.Add(Me.PnlKeycard)
-        Me.name = "VisitorGetUserControl"
-        Me.Size = New System.Drawing.Size(604, 558)
-        Me.PnlVisitorName.ResumeLayout(False)
-        Me.PnlVisitorName.PerformLayout()
-        Me.PnlVisitorId.ResumeLayout(False)
-        Me.PnlVisitorId.PerformLayout()
-        Me.PnlPassword.ResumeLayout(False)
-        Me.PnlPassword.PerformLayout()
-        Me.PnlKeycard.ResumeLayout(False)
-        Me.PnlKeycard.PerformLayout()
-        Me.ResumeLayout(False)
-        Me.PerformLayout()
-
+        components = New ComponentModel.Container()
+        PnlVisitorName = New Panel()
+        TxtVisitorName = New TextBox()
+        LblVisitorName = New Label()
+        BtnNext = New Button()
+        LblVisitorId = New Label()
+        PnlVisitorId = New Panel()
+        TxtVisitorId = New TextBox()
+        BtnBack = New Button()
+        BtnSubmit = New Button()
+        PnlPassword = New Panel()
+        TxtPassword = New TextBox()
+        LblPassword = New Label()
+        LblVisitor = New Label()
+        PnlVisitorInput = New Panel()
+        PnlVisitorInfo = New Panel()
+        Panel1 = New Panel()
+        Label1 = New Label()
+        LblVisitorInfoName = New Label()
+        TxtKeycard = New TextBox()
+        TimerVisitor = New Timer(components)
+        Panel2 = New Panel()
+        PnlVisitorName.SuspendLayout()
+        PnlVisitorId.SuspendLayout()
+        PnlPassword.SuspendLayout()
+        PnlVisitorInput.SuspendLayout()
+        PnlVisitorInfo.SuspendLayout()
+        Panel1.SuspendLayout()
+        SuspendLayout()
+        ' 
+        ' PnlVisitorName
+        ' 
+        PnlVisitorName.BackColor = SystemColors.ControlLightLight
+        PnlVisitorName.BorderStyle = BorderStyle.FixedSingle
+        PnlVisitorName.Controls.Add(TxtVisitorName)
+        PnlVisitorName.Location = New Point(18, 94)
+        PnlVisitorName.Name = "PnlVisitorName"
+        PnlVisitorName.Size = New Size(300, 35)
+        PnlVisitorName.TabIndex = 23
+        ' 
+        ' TxtVisitorName
+        ' 
+        TxtVisitorName.BackColor = SystemColors.ControlLightLight
+        TxtVisitorName.BorderStyle = BorderStyle.None
+        TxtVisitorName.Font = New Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        TxtVisitorName.Location = New Point(9, 9)
+        TxtVisitorName.Margin = New Padding(10)
+        TxtVisitorName.Name = "TxtVisitorName"
+        TxtVisitorName.Size = New Size(280, 15)
+        TxtVisitorName.TabIndex = 0
+        ' 
+        ' LblVisitorName
+        ' 
+        LblVisitorName.AutoSize = True
+        LblVisitorName.BackColor = Color.Transparent
+        LblVisitorName.Font = New Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        LblVisitorName.ForeColor = Color.Gold
+        LblVisitorName.Location = New Point(18, 77)
+        LblVisitorName.Name = "LblVisitorName"
+        LblVisitorName.Size = New Size(86, 14)
+        LblVisitorName.TabIndex = 21
+        LblVisitorName.Text = "Visitor Name"
+        ' 
+        ' BtnNext
+        ' 
+        BtnNext.BackColor = Color.Gold
+        BtnNext.FlatAppearance.BorderSize = 0
+        BtnNext.FlatStyle = FlatStyle.Flat
+        BtnNext.Font = New Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        BtnNext.ForeColor = Color.Navy
+        BtnNext.Location = New Point(18, 190)
+        BtnNext.Name = "BtnNext"
+        BtnNext.Size = New Size(300, 35)
+        BtnNext.TabIndex = 22
+        BtnNext.Text = "Next"
+        BtnNext.UseVisualStyleBackColor = False
+        ' 
+        ' LblVisitorId
+        ' 
+        LblVisitorId.AutoSize = True
+        LblVisitorId.BackColor = Color.Transparent
+        LblVisitorId.Font = New Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        LblVisitorId.ForeColor = Color.Gold
+        LblVisitorId.Location = New Point(18, 22)
+        LblVisitorId.Name = "LblVisitorId"
+        LblVisitorId.Size = New Size(63, 14)
+        LblVisitorId.TabIndex = 24
+        LblVisitorId.Text = "Visitor Id"
+        ' 
+        ' PnlVisitorId
+        ' 
+        PnlVisitorId.BackColor = SystemColors.ControlLightLight
+        PnlVisitorId.BorderStyle = BorderStyle.FixedSingle
+        PnlVisitorId.Controls.Add(TxtVisitorId)
+        PnlVisitorId.Location = New Point(18, 39)
+        PnlVisitorId.Name = "PnlVisitorId"
+        PnlVisitorId.Size = New Size(300, 35)
+        PnlVisitorId.TabIndex = 25
+        ' 
+        ' TxtVisitorId
+        ' 
+        TxtVisitorId.BackColor = SystemColors.ControlLightLight
+        TxtVisitorId.BorderStyle = BorderStyle.None
+        TxtVisitorId.Enabled = False
+        TxtVisitorId.Font = New Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        TxtVisitorId.Location = New Point(9, 9)
+        TxtVisitorId.Margin = New Padding(10)
+        TxtVisitorId.Name = "TxtVisitorId"
+        TxtVisitorId.Size = New Size(280, 15)
+        TxtVisitorId.TabIndex = 0
+        ' 
+        ' BtnBack
+        ' 
+        BtnBack.BackColor = Color.Gold
+        BtnBack.FlatAppearance.BorderColor = Color.Gold
+        BtnBack.FlatStyle = FlatStyle.Flat
+        BtnBack.Font = New Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        BtnBack.ForeColor = Color.Navy
+        BtnBack.Location = New Point(18, 167)
+        BtnBack.Name = "BtnBack"
+        BtnBack.Size = New Size(299, 35)
+        BtnBack.TabIndex = 27
+        BtnBack.Text = "Back"
+        BtnBack.UseVisualStyleBackColor = False
+        ' 
+        ' BtnSubmit
+        ' 
+        BtnSubmit.BackColor = Color.Gold
+        BtnSubmit.FlatAppearance.BorderSize = 0
+        BtnSubmit.FlatStyle = FlatStyle.Flat
+        BtnSubmit.Font = New Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        BtnSubmit.ForeColor = Color.Navy
+        BtnSubmit.Location = New Point(167, 167)
+        BtnSubmit.Name = "BtnSubmit"
+        BtnSubmit.Size = New Size(150, 35)
+        BtnSubmit.TabIndex = 26
+        BtnSubmit.Text = "Submit"
+        BtnSubmit.UseVisualStyleBackColor = False
+        ' 
+        ' PnlPassword
+        ' 
+        PnlPassword.BackColor = SystemColors.ControlLightLight
+        PnlPassword.BorderStyle = BorderStyle.FixedSingle
+        PnlPassword.Controls.Add(TxtPassword)
+        PnlPassword.Location = New Point(18, 149)
+        PnlPassword.Name = "PnlPassword"
+        PnlPassword.Size = New Size(300, 35)
+        PnlPassword.TabIndex = 29
+        ' 
+        ' TxtPassword
+        ' 
+        TxtPassword.BackColor = SystemColors.ControlLightLight
+        TxtPassword.BorderStyle = BorderStyle.None
+        TxtPassword.Font = New Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        TxtPassword.Location = New Point(9, 9)
+        TxtPassword.Margin = New Padding(10)
+        TxtPassword.Name = "TxtPassword"
+        TxtPassword.PasswordChar = "•"c
+        TxtPassword.Size = New Size(280, 15)
+        TxtPassword.TabIndex = 0
+        ' 
+        ' LblPassword
+        ' 
+        LblPassword.AutoSize = True
+        LblPassword.BackColor = Color.Transparent
+        LblPassword.Font = New Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        LblPassword.ForeColor = Color.Gold
+        LblPassword.Location = New Point(18, 132)
+        LblPassword.Name = "LblPassword"
+        LblPassword.Size = New Size(111, 14)
+        LblPassword.TabIndex = 28
+        LblPassword.Text = "Admin Password"
+        ' 
+        ' LblVisitor
+        ' 
+        LblVisitor.AutoSize = True
+        LblVisitor.BackColor = Color.Transparent
+        LblVisitor.Font = New Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        LblVisitor.ForeColor = Color.Gold
+        LblVisitor.Location = New Point(18, 109)
+        LblVisitor.Name = "LblVisitor"
+        LblVisitor.Size = New Size(59, 14)
+        LblVisitor.TabIndex = 31
+        LblVisitor.Text = "Visitor : "
+        ' 
+        ' PnlVisitorInput
+        ' 
+        PnlVisitorInput.BackColor = Color.Navy
+        PnlVisitorInput.Controls.Add(PnlPassword)
+        PnlVisitorInput.Controls.Add(LblVisitorId)
+        PnlVisitorInput.Controls.Add(LblPassword)
+        PnlVisitorInput.Controls.Add(PnlVisitorName)
+        PnlVisitorInput.Controls.Add(LblVisitorName)
+        PnlVisitorInput.Controls.Add(BtnNext)
+        PnlVisitorInput.Controls.Add(PnlVisitorId)
+        PnlVisitorInput.Location = New Point(133, 167)
+        PnlVisitorInput.Name = "PnlVisitorInput"
+        PnlVisitorInput.Size = New Size(339, 245)
+        PnlVisitorInput.TabIndex = 32
+        ' 
+        ' PnlVisitorInfo
+        ' 
+        PnlVisitorInfo.BackColor = Color.Navy
+        PnlVisitorInfo.Controls.Add(Panel1)
+        PnlVisitorInfo.Controls.Add(LblVisitorInfoName)
+        PnlVisitorInfo.Controls.Add(LblVisitor)
+        PnlVisitorInfo.Controls.Add(BtnBack)
+        PnlVisitorInfo.Controls.Add(BtnSubmit)
+        PnlVisitorInfo.Controls.Add(TxtKeycard)
+        PnlVisitorInfo.Location = New Point(133, 167)
+        PnlVisitorInfo.Name = "PnlVisitorInfo"
+        PnlVisitorInfo.Size = New Size(339, 245)
+        PnlVisitorInfo.TabIndex = 33
+        ' 
+        ' Panel1
+        ' 
+        Panel1.BorderStyle = BorderStyle.FixedSingle
+        Panel1.Controls.Add(Label1)
+        Panel1.Location = New Point(18, 53)
+        Panel1.Name = "Panel1"
+        Panel1.Size = New Size(305, 35)
+        Panel1.TabIndex = 34
+        ' 
+        ' Label1
+        ' 
+        Label1.AutoSize = True
+        Label1.BackColor = Color.Transparent
+        Label1.Font = New Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        Label1.ForeColor = Color.Gold
+        Label1.Location = New Point(4, 10)
+        Label1.Name = "Label1"
+        Label1.Size = New Size(229, 14)
+        Label1.TabIndex = 33
+        Label1.Text = "Please tap a keycard for the visitor."
+        ' 
+        ' LblVisitorInfoName
+        ' 
+        LblVisitorInfoName.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
+        LblVisitorInfoName.AutoSize = True
+        LblVisitorInfoName.BackColor = Color.Transparent
+        LblVisitorInfoName.Font = New Font("Verdana", 18F, FontStyle.Bold, GraphicsUnit.Point)
+        LblVisitorInfoName.ForeColor = Color.Gold
+        LblVisitorInfoName.Location = New Point(18, 126)
+        LblVisitorInfoName.Name = "LblVisitorInfoName"
+        LblVisitorInfoName.Size = New Size(230, 29)
+        LblVisitorInfoName.TabIndex = 32
+        LblVisitorInfoName.Text = "Jhaymark Lopez"
+        ' 
+        ' TxtKeycard
+        ' 
+        TxtKeycard.BackColor = SystemColors.ControlLightLight
+        TxtKeycard.BorderStyle = BorderStyle.None
+        TxtKeycard.Font = New Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        TxtKeycard.Location = New Point(18, 167)
+        TxtKeycard.Margin = New Padding(10)
+        TxtKeycard.Multiline = True
+        TxtKeycard.Name = "TxtKeycard"
+        TxtKeycard.Size = New Size(299, 35)
+        TxtKeycard.TabIndex = 1
+        ' 
+        ' TimerVisitor
+        ' 
+        TimerVisitor.Interval = 1000
+        ' 
+        ' Panel2
+        ' 
+        Panel2.BackColor = Color.Navy
+        Panel2.Location = New Point(0, 49)
+        Panel2.Name = "Panel2"
+        Panel2.Size = New Size(604, 516)
+        Panel2.TabIndex = 34
+        ' 
+        ' VisitorGetUserControl
+        ' 
+        AutoScaleDimensions = New SizeF(7F, 15F)
+        AutoScaleMode = AutoScaleMode.Font
+        BackColor = Color.Gold
+        Controls.Add(PnlVisitorInfo)
+        Controls.Add(PnlVisitorInput)
+        Controls.Add(Panel2)
+        Name = "VisitorGetUserControl"
+        Size = New Size(604, 558)
+        PnlVisitorName.ResumeLayout(False)
+        PnlVisitorName.PerformLayout()
+        PnlVisitorId.ResumeLayout(False)
+        PnlVisitorId.PerformLayout()
+        PnlPassword.ResumeLayout(False)
+        PnlPassword.PerformLayout()
+        PnlVisitorInput.ResumeLayout(False)
+        PnlVisitorInput.PerformLayout()
+        PnlVisitorInfo.ResumeLayout(False)
+        PnlVisitorInfo.PerformLayout()
+        Panel1.ResumeLayout(False)
+        Panel1.PerformLayout()
+        ResumeLayout(False)
     End Sub
 
     Friend WithEvents PnlVisitorName As Panel
@@ -263,7 +333,13 @@ Partial Class VisitorGetUserControl
     Friend WithEvents PnlPassword As Panel
     Friend WithEvents TxtPassword As TextBox
     Friend WithEvents LblPassword As Label
-    Friend WithEvents PnlKeycard As Panel
+    Friend WithEvents LblVisitor As Label
+    Friend WithEvents PnlVisitorInput As Panel
+    Friend WithEvents PnlVisitorInfo As Panel
     Friend WithEvents TxtKeycard As TextBox
-    Friend WithEvents LblKeycard As Label
+    Friend WithEvents Panel1 As Panel
+    Friend WithEvents Label1 As Label
+    Friend WithEvents LblVisitorInfoName As Label
+    Friend WithEvents TimerVisitor As Timer
+    Friend WithEvents Panel2 As Panel
 End Class

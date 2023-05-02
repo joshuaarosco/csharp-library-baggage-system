@@ -16,6 +16,9 @@
     <Compile Update="MainUserControl.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="RegisterUserControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="ReturnUserControl.vb">
       <SubType>UserControl</SubType>
     </Compile>

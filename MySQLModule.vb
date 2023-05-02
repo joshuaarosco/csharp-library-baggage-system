@@ -11,7 +11,7 @@ Module MySQLModule
     Public admintable As New DataTable
 
     Sub OpenCon()
-        con.ConnectionString = "server=localhost; username=root; password=dev123; database=baggage_system"
+        con.ConnectionString = "server=localhost; username=root; password=root; database=baggage_system"
         con.Open()
     End Sub
 
@@ -19,7 +19,8 @@ Module MySQLModule
         admintable.Columns.Add("Id", Type.GetType("System.String"))
         admintable.Columns.Add("Name", Type.GetType("System.String"))
         admintable.Columns.Add("ID #", Type.GetType("System.String"))
-        admintable.Columns.Add("Keycard", Type.GetType("System.String"))
+        'admintable.Columns.Add("Keycard", Type.GetType("System.String"))
+        admintable.Columns.Add("Locker", Type.GetType("System.String"))
         admintable.Columns.Add("Baggage", Type.GetType("System.String"))
         admintable.Columns.Add("Date", Type.GetType("System.String"))
         admintable.Columns.Add("Time In", Type.GetType("System.String"))
@@ -28,7 +29,7 @@ Module MySQLModule
 
     Sub LoadTableHeaderMain()
         table.Columns.Add("Id", Type.GetType("System.String"))
-        table.Columns.Add("Keycard", Type.GetType("System.String"))
+        table.Columns.Add("Locker", Type.GetType("System.String"))
         table.Columns.Add("Status", Type.GetType("System.String"))
     End Sub
 
