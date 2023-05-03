@@ -20,7 +20,7 @@ Module GetDetails
 
                 Next
             Else
-                lockerName = ""
+                lockerName = "xxxxxxxxxx"
             End If
 
             con.Close()

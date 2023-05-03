@@ -36,7 +36,6 @@ Partial Class MainFrm
         BtnVisitor = New Button()
         Panel1 = New Panel()
         PnlConnection = New Panel()
-        TxtLockerMask = New TextBox()
         PBLockerConnection = New PictureBox()
         Label3 = New Label()
         TxtLockerCOM = New TextBox()
@@ -48,6 +47,7 @@ Partial Class MainFrm
         Label1 = New Label()
         BtnConnect = New Button()
         TxtDataMask = New TextBox()
+        TxtLockerMask = New TextBox()
         PBDisplayConnection = New PictureBox()
         TimerSerial = New Timer(components)
         DesktopScannerSerialPort = New SerialPort(components)
@@ -153,7 +153,6 @@ Partial Class MainFrm
         ' PnlConnection
         ' 
         PnlConnection.BackColor = Color.FloralWhite
-        PnlConnection.Controls.Add(TxtLockerMask)
         PnlConnection.Controls.Add(PBLockerConnection)
         PnlConnection.Controls.Add(Label3)
         PnlConnection.Controls.Add(TxtLockerCOM)
@@ -165,18 +164,12 @@ Partial Class MainFrm
         PnlConnection.Controls.Add(Label1)
         PnlConnection.Controls.Add(BtnConnect)
         PnlConnection.Controls.Add(TxtDataMask)
+        PnlConnection.Controls.Add(TxtLockerMask)
         PnlConnection.Location = New Point(12, 461)
         PnlConnection.Name = "PnlConnection"
         PnlConnection.Size = New Size(178, 157)
         PnlConnection.TabIndex = 23
         PnlConnection.Visible = False
-        ' 
-        ' TxtLockerMask
-        ' 
-        TxtLockerMask.Location = New Point(97, 97)
-        TxtLockerMask.Name = "TxtLockerMask"
-        TxtLockerMask.Size = New Size(70, 23)
-        TxtLockerMask.TabIndex = 32
         ' 
         ' PBLockerConnection
         ' 
@@ -272,6 +265,13 @@ Partial Class MainFrm
         TxtDataMask.Size = New Size(70, 23)
         TxtDataMask.TabIndex = 28
         ' 
+        ' TxtLockerMask
+        ' 
+        TxtLockerMask.Location = New Point(97, 70)
+        TxtLockerMask.Name = "TxtLockerMask"
+        TxtLockerMask.Size = New Size(70, 23)
+        TxtLockerMask.TabIndex = 32
+        ' 
         ' PBDisplayConnection
         ' 
         PBDisplayConnection.BackColor = Color.Red
@@ -287,11 +287,10 @@ Partial Class MainFrm
         ' 
         ' TimerForUserControl
         ' 
-        TimerForUserControl.Interval = 1000
         ' 
         ' MainFrm
         ' 
-        AutoScaleDimensions = New SizeF(7.0F, 15.0F)
+        AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackgroundImage = My.Resources.Resources.bgimage
         BackgroundImageLayout = ImageLayout.Stretch

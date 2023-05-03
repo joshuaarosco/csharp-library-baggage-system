@@ -22,6 +22,7 @@ Partial Class LoginUserControl
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        components = New ComponentModel.Container()
         PnlLogin = New Panel()
         PnlPassword = New Panel()
         TxtPassword = New TextBox()
@@ -30,11 +31,13 @@ Partial Class LoginUserControl
         TxtUsername = New TextBox()
         BtnLogin = New Button()
         LblVisitorName = New Label()
+        LblTitle = New Label()
         DgvBaggages = New DataGridView()
         TxtSearch = New TextBox()
         PnlStudNum = New Panel()
         LblSearch = New Label()
         BtnAdd = New Button()
+        TimerAdminUserControl = New Timer(components)
         PnlLogin.SuspendLayout()
         PnlPassword.SuspendLayout()
         PnlVisitorName.SuspendLayout()
@@ -50,7 +53,7 @@ Partial Class LoginUserControl
         PnlLogin.Controls.Add(PnlVisitorName)
         PnlLogin.Controls.Add(BtnLogin)
         PnlLogin.Controls.Add(LblVisitorName)
-        PnlLogin.Location = New Point(0, 48)
+        PnlLogin.Location = New Point(0, 49)
         PnlLogin.Name = "PnlLogin"
         PnlLogin.Size = New Size(604, 516)
         PnlLogin.TabIndex = 0
@@ -60,7 +63,7 @@ Partial Class LoginUserControl
         PnlPassword.BackColor = SystemColors.ControlLightLight
         PnlPassword.BorderStyle = BorderStyle.FixedSingle
         PnlPassword.Controls.Add(TxtPassword)
-        PnlPassword.Location = New Point(147, 269)
+        PnlPassword.Location = New Point(151, 267)
         PnlPassword.Name = "PnlPassword"
         PnlPassword.Size = New Size(300, 35)
         PnlPassword.TabIndex = 29
@@ -83,7 +86,7 @@ Partial Class LoginUserControl
         LblPassword.BackColor = Color.Transparent
         LblPassword.Font = New Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point)
         LblPassword.ForeColor = Color.Gold
-        LblPassword.Location = New Point(147, 252)
+        LblPassword.Location = New Point(151, 250)
         LblPassword.Name = "LblPassword"
         LblPassword.Size = New Size(69, 14)
         LblPassword.TabIndex = 28
@@ -94,7 +97,7 @@ Partial Class LoginUserControl
         PnlVisitorName.BackColor = SystemColors.ControlLightLight
         PnlVisitorName.BorderStyle = BorderStyle.FixedSingle
         PnlVisitorName.Controls.Add(TxtUsername)
-        PnlVisitorName.Location = New Point(147, 214)
+        PnlVisitorName.Location = New Point(151, 212)
         PnlVisitorName.Name = "PnlVisitorName"
         PnlVisitorName.Size = New Size(300, 35)
         PnlVisitorName.TabIndex = 23
@@ -117,7 +120,7 @@ Partial Class LoginUserControl
         BtnLogin.FlatStyle = FlatStyle.Flat
         BtnLogin.Font = New Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point)
         BtnLogin.ForeColor = Color.Navy
-        BtnLogin.Location = New Point(147, 310)
+        BtnLogin.Location = New Point(151, 308)
         BtnLogin.Name = "BtnLogin"
         BtnLogin.Size = New Size(300, 35)
         BtnLogin.TabIndex = 22
@@ -130,11 +133,24 @@ Partial Class LoginUserControl
         LblVisitorName.BackColor = Color.Transparent
         LblVisitorName.Font = New Font("Verdana", 9F, FontStyle.Regular, GraphicsUnit.Point)
         LblVisitorName.ForeColor = Color.Gold
-        LblVisitorName.Location = New Point(147, 197)
+        LblVisitorName.Location = New Point(151, 195)
         LblVisitorName.Name = "LblVisitorName"
         LblVisitorName.Size = New Size(71, 14)
         LblVisitorName.TabIndex = 21
         LblVisitorName.Text = "Username"
+        ' 
+        ' LblTitle
+        ' 
+        LblTitle.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
+        LblTitle.AutoSize = True
+        LblTitle.BackColor = Color.Transparent
+        LblTitle.Font = New Font("Verdana", 18F, FontStyle.Bold, GraphicsUnit.Point)
+        LblTitle.ForeColor = Color.Navy
+        LblTitle.Location = New Point(3, 4)
+        LblTitle.Name = "LblTitle"
+        LblTitle.Size = New Size(180, 29)
+        LblTitle.TabIndex = 34
+        LblTitle.Text = "Admin Login"
         ' 
         ' DgvBaggages
         ' 
@@ -143,7 +159,7 @@ Partial Class LoginUserControl
         DgvBaggages.BackgroundColor = Color.Navy
         DgvBaggages.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
         DgvBaggages.GridColor = Color.Navy
-        DgvBaggages.Location = New Point(0, 48)
+        DgvBaggages.Location = New Point(0, 50)
         DgvBaggages.Name = "DgvBaggages"
         DgvBaggages.ReadOnly = True
         DgvBaggages.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
@@ -198,11 +214,15 @@ Partial Class LoginUserControl
         BtnAdd.Text = "+"
         BtnAdd.UseVisualStyleBackColor = False
         ' 
+        ' TimerAdminUserControl
+        ' 
+        ' 
         ' LoginUserControl
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.Gold
+        Controls.Add(LblTitle)
         Controls.Add(BtnAdd)
         Controls.Add(PnlStudNum)
         Controls.Add(PnlLogin)
@@ -219,6 +239,7 @@ Partial Class LoginUserControl
         PnlStudNum.ResumeLayout(False)
         PnlStudNum.PerformLayout()
         ResumeLayout(False)
+        PerformLayout()
     End Sub
 
     Friend WithEvents PnlLogin As Panel
@@ -238,4 +259,6 @@ Partial Class LoginUserControl
     Friend WithEvents LblSearch As Label
     Friend WithEvents DgvBaggages As DataGridView
     Friend WithEvents BtnAdd As Button
+    Friend WithEvents LblTitle As Label
+    Friend WithEvents TimerAdminUserControl As Timer
 End Class

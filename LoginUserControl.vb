@@ -2,6 +2,9 @@
 Public Class LoginUserControl
     Dim authenticated As Boolean
     Dim testText As String = "password"
+    Dim _RegisterUserControl As RegisterUserControl
+    Public historyTableRefresh As Boolean = False
+
     Private Sub LoginUserControl_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         LoadTableHeader()
         AdminLoadTable()
@@ -158,8 +161,16 @@ Public Class LoginUserControl
             PnlLogin.SendToBack()
             PnlStudNum.Visible = True
             BtnAdd.Visible = True
+            LblTitle.Visible = False
         Else
             MessageBox.Show("Invalid username and password combination.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+        End If
+    End Sub
+
+    Private Sub TimerAdminUserControl_Tick(sender As Object, e As EventArgs) Handles TimerAdminUserControl.Tick
+        If historyTableRefresh Then
+            AdminLoadTable()
+            historyTableRefresh = False
         End If
     End Sub
 End Class

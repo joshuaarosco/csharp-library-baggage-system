@@ -5,10 +5,15 @@ Public Class MainFrm
     Public dataMask As String = ""
     Public lockerMask As String = ""
     Public showRegisterForm As Boolean = False
+    Public showMainUC As Boolean = False
+    Public adminBtnClicked As Boolean = False
+    Public refreshAllTables As Boolean = False
+    Public refreshKeycardCount As Boolean = False
 
     Dim _GetUserControl As New GetUserControl
     Dim _MainUserControl As New MainUserControl
     Dim _AdminUserControl As New AdminUserControl
+    Dim _LoginUserControl As New LoginUserControl
     Dim _VisitorGetUserControl As New VisitorGetUserControl
     Dim _RegisterUserControl As New RegisterUserControl
 
@@ -19,6 +24,8 @@ Public Class MainFrm
     Dim userType As String = ""
     Dim userName As String = ""
     Dim lockerName As String = ""
+
+    Dim keycardCounter As Integer = 0
     Private Sub BtnClose_Click(sender As Object, e As EventArgs) Handles BtnClose.Click
         Me.Close()
     End Sub
@@ -28,8 +35,10 @@ Public Class MainFrm
     End Sub
 
     Private Sub MainFrm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        KeycardCount()
         PnlHome.Controls.Add(_MainUserControl)
         BtnHome.Enabled = False
+        adminBtnClicked = False
         TimerForUserControl.Enabled = True
     End Sub
 
@@ -47,14 +56,16 @@ Public Class MainFrm
 
         EnableButtons()
         BtnHome.Enabled = False
+        adminBtnClicked = False
     End Sub
 
     Private Sub PbAdmin_Click(sender As Object, e As EventArgs) Handles PbAdmin.Click
         PnlHome.Controls.Add(_AdminUserControl)
         _AdminUserControl.BringToFront()
 
-        EnableButtons()
+        adminBtnClicked = True
         PbAdmin.Enabled = False
+        EnableButtons()
     End Sub
 
     Private Sub BtnGet_Click(sender As Object, e As EventArgs)
@@ -80,7 +91,7 @@ Public Class MainFrm
     End Sub
 
     Private Sub BtnConnect_Click(sender As Object, e As EventArgs) Handles BtnConnect.Click
-        'ConnectScannerCOM()
+        ConnectScannerCOM()
         ConnectLockerCOM()
     End Sub
 
@@ -140,28 +151,28 @@ Public Class MainFrm
         LblDataMask.Text = dataMask
         TxtDataMask.Text = dataMask
         _VisitorGetUserControl.rfid = dataMask
-        'TxtLockerMask.Text = lockerMask
+        _RegisterUserControl.rfid = dataMask
+        TxtLockerMask.Text = lockerMask
+        LblDataMask.Text = lockerMask
     End Sub
 
     Private Sub TxtDataMask_TextChanged(sender As Object, e As EventArgs) Handles TxtDataMask.TextChanged
-        _MainUserControl.mainTableRefresh = True
+        refreshAllTables = True
         If TxtDataMask.Text <> "" Then
-            'SendSerialData(dataMask)
             CheckKeycard()
-            If keycardId = "" And BtnVisitor.Enabled = True Then
+            If keycardId = "" And BtnVisitor.Enabled = True And adminBtnClicked = False Then
                 MessageBox.Show("Unregistered keycard, keycard details not found!", "Oops!")
-            ElseIf userId = "" And BtnVisitor.Enabled = True Then
+            ElseIf userId = "" And BtnVisitor.Enabled = True And adminBtnClicked = False Then
                 MessageBox.Show("No user has been assigned on this keycard yet.", "Oops!")
             ElseIf userId <> "" And keycardId <> "" Then
                 GetBaggageDetail()
                 If baggageId <> "" Then
                     Logout()
                     MessageBox.Show("Logged out successfully.", Title())
-                    _MainUserControl.mainTableRefresh = True
+                    refreshAllTables = True
                 Else
                     Login()
-                    _MainUserControl.mainTableRefresh = True
-
+                    refreshAllTables = True
                 End If
             End If
         End If
@@ -170,6 +181,33 @@ Public Class MainFrm
     Sub CheckKeycard()
         Try
             Dim rfid = GetTen(TxtDataMask.Text)
+            OpenCon()
+            cmd.Connection = con
+            cmd.CommandText = "SELECT * FROM keycards WHERE rfid LIKE '%" & rfid & "%' LIMIT 1"
+            adapter.SelectCommand = cmd
+            data.Clear()
+
+            If adapter.Fill(data) Then
+                For x As Integer = 0 To data.Tables(0).Rows.Count - 1
+
+                    keycardId = data.Tables(0).Rows(x)("id").ToString()
+                    userId = data.Tables(0).Rows(x)("user_id").ToString()
+
+                Next
+            Else
+                keycardId = ""
+                userId = ""
+            End If
+
+            con.Close()
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
+    End Sub
+
+    Sub CheckLockerKeycard()
+        Try
+            Dim rfid = GetTen(TxtLockerMask.Text)
             OpenCon()
             cmd.Connection = con
             cmd.CommandText = "SELECT * FROM keycards WHERE rfid LIKE '%" & rfid & "%' LIMIT 1"
@@ -375,14 +413,8 @@ Public Class MainFrm
         End Try
     End Sub
 
-    Sub SendSerialData(ByVal data As String)
-        ' Send strings to a serial port.
-        'Dim serialPort As IO.Ports.SerialPort = New IO.Ports.SerialPort()
-        'SerialPort.PortName = TxtCom.Text
-        'serialPort.Open()
-        'Dim bOpen = serialPort.IsOpen
-        Dim nBaudRate = LockerSerialPort.BaudRate
-        Debug.WriteLine(String.Format("Test data coming from VB"))
+    Sub SendSerialData(lockerName As String)
+        LockerSerialPort.Write(String.Format(lockerName))
     End Sub
 
     Private Sub DesktopScannerSerialPort_DataReceived(sender As Object, e As SerialDataReceivedEventArgs) Handles DesktopScannerSerialPort.DataReceived
@@ -395,11 +427,36 @@ Public Class MainFrm
 
     Private Sub TxtLockerMask_TextChanged(sender As Object, e As EventArgs) Handles TxtLockerMask.TextChanged
         If TxtLockerMask.Text <> "" Then
-            SendSerialData(lockerMask)
+            Dim lockerName As String = "xxxxxxxxxx"
+            CheckLockerKeycard()
+            If keycardId <> "" And userId <> "" Then
+                GetBaggageDetail()
+                If baggageId <> "" And lockerId <> "" Then
+                    lockerName = GetLockerName(lockerId)
+                    SendSerialData(lockerName)
+                    'MessageBox.Show("Access Granted!", Title())
+                    lockerMask = ""
+                Else
+                    SendSerialData(lockerName)
+                    'MessageBox.Show("Access Denied!", Title())
+                    lockerMask = ""
+                End If
+            Else
+                SendSerialData(lockerName)
+            End If
         End If
     End Sub
 
     Private Sub TimerForUserControl_Tick(sender As Object, e As EventArgs) Handles TimerForUserControl.Tick
+        If refreshKeycardCount Then
+            KeycardCount()
+            refreshKeycardCount = False
+        End If
+        If refreshAllTables Then
+            _MainUserControl.mainTableRefresh = True
+            _LoginUserControl.historyTableRefresh = True
+            refreshAllTables = False
+        End If
         If showRegisterForm Then
             PnlHome.Controls.Add(_RegisterUserControl)
             _RegisterUserControl.BringToFront()
@@ -407,5 +464,39 @@ Public Class MainFrm
             EnableButtons()
             showRegisterForm = False
         End If
+
+        If showMainUC Then
+            PnlHome.Controls.Add(_MainUserControl)
+            _MainUserControl.BringToFront()
+
+            EnableButtons()
+            showMainUC = False
+        End If
     End Sub
+
+    Sub KeycardCount()
+        Try
+            OpenCon()
+            cmd.Connection = con
+            cmd.CommandText = "SELECT Count(*) FROM keycards"
+            adapter.SelectCommand = cmd
+            data.Clear()
+
+            If adapter.Fill(data) Then
+                For x As Integer = 0 To data.Tables(0).Rows.Count - 1
+
+                    keycardCounter = data.Tables(0).Rows(x)("count(*)") + 1
+
+                Next
+            Else
+                keycardCounter = keycardCounter + 1
+            End If
+
+            _RegisterUserControl.keycardCounter = keycardCounter
+            con.Close()
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
+    End Sub
+
 End Class

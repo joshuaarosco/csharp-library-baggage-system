@@ -20,16 +20,22 @@ Public Class VisitorGetUserControl
     End Sub
 
     Private Sub BtnNext_Click(sender As Object, e As EventArgs) Handles BtnNext.Click
-        CheckPassword()
-        If authenticated = False Then
-            MessageBox.Show("Please enter the correct Admin Password", "Oops!")
+
+        If TxtVisitorName.Text <> "" Then
+            CheckPassword()
+            If authenticated = False Then
+                MessageBox.Show("Please enter the correct Admin Password", "Oops!")
+            Else
+                HideFirstElements()
+                visitorname = TxtVisitorName.Text
+                LblVisitorInfoName.Text = visitorname
+                id = TxtVisitorId.Text
+                TimerVisitor.Enabled = True
+            End If
         Else
-            HideFirstElements()
-            visitorname = TxtVisitorName.Text
-            LblVisitorInfoName.Text = visitorname
-            id = TxtVisitorId.Text
-            TimerVisitor.Enabled = True
+            MessageBox.Show("Visitor name field is required.", Title())
         End If
+
     End Sub
 
     Private Sub BtnBack_Click(sender As Object, e As EventArgs) Handles BtnBack.Click
@@ -186,7 +192,7 @@ Public Class VisitorGetUserControl
     End Sub
 
     Private Sub TxtKeycard_TextChanged(sender As Object, e As EventArgs) Handles TxtKeycard.TextChanged
-
+        MainFrm.refreshAllTables = True
         If (TxtKeycard.Text <> "") Then
             GetKeycardData(TxtKeycard.Text)
             CheckKeycardAvailability()
@@ -212,6 +218,7 @@ Public Class VisitorGetUserControl
                     ShowFirstElements()
                     ClearFields()
                     GenerateVisitorId()
+                    MainFrm.refreshAllTables = True
                 End If
             End If
             TimerVisitor.Enabled = False

@@ -46,6 +46,7 @@ Partial Class VisitorGetUserControl
         TxtKeycard = New TextBox()
         TimerVisitor = New Timer(components)
         Panel2 = New Panel()
+        Label2 = New Label()
         PnlVisitorName.SuspendLayout()
         PnlVisitorId.SuspendLayout()
         PnlPassword.SuspendLayout()
@@ -296,11 +297,25 @@ Partial Class VisitorGetUserControl
         Panel2.Size = New Size(604, 516)
         Panel2.TabIndex = 34
         ' 
+        ' Label2
+        ' 
+        Label2.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
+        Label2.AutoSize = True
+        Label2.BackColor = Color.Transparent
+        Label2.Font = New Font("Verdana", 18F, FontStyle.Bold, GraphicsUnit.Point)
+        Label2.ForeColor = Color.Navy
+        Label2.Location = New Point(3, 3)
+        Label2.Name = "Label2"
+        Label2.Size = New Size(181, 29)
+        Label2.TabIndex = 35
+        Label2.Text = "Visitor Login"
+        ' 
         ' VisitorGetUserControl
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.Gold
+        Controls.Add(Label2)
         Controls.Add(PnlVisitorInfo)
         Controls.Add(PnlVisitorInput)
         Controls.Add(Panel2)
@@ -319,6 +334,7 @@ Partial Class VisitorGetUserControl
         Panel1.ResumeLayout(False)
         Panel1.PerformLayout()
         ResumeLayout(False)
+        PerformLayout()
     End Sub
 
     Friend WithEvents PnlVisitorName As Panel
@@ -342,4 +358,5 @@ Partial Class VisitorGetUserControl
     Friend WithEvents LblVisitorInfoName As Label
     Friend WithEvents TimerVisitor As Timer
     Friend WithEvents Panel2 As Panel
+    Friend WithEvents Label2 As Label
 End Class
